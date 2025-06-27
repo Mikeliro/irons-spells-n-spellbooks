@@ -15,8 +15,8 @@ import io.redspace.ironsspellbooks.api.util.CameraShakeManager;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.block.BloodCauldronBlock;
 import io.redspace.ironsspellbooks.block.portal_frame.PortalFrameBlockEntity;
-import io.redspace.ironsspellbooks.capabilities.magic.PocketDimensionManager;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
+import io.redspace.ironsspellbooks.capabilities.magic.PocketDimensionManager;
 import io.redspace.ironsspellbooks.capabilities.magic.RecastResult;
 import io.redspace.ironsspellbooks.capabilities.magic.SummonManager;
 import io.redspace.ironsspellbooks.capabilities.magic.SyncedSpellData;
@@ -27,6 +27,7 @@ import io.redspace.ironsspellbooks.datagen.DamageTypeTagGenerator;
 import io.redspace.ironsspellbooks.effect.*;
 import io.redspace.ironsspellbooks.entity.mobs.IMagicSummon;
 import io.redspace.ironsspellbooks.entity.mobs.ice_spider.ICritablePartEntity;
+import io.redspace.ironsspellbooks.entity.mobs.wizards.fire_boss.IOminousEntity;
 import io.redspace.ironsspellbooks.entity.spells.ice_tomb.IceTombEntity;
 import io.redspace.ironsspellbooks.entity.spells.root.PreventDismount;
 import io.redspace.ironsspellbooks.item.CastingItem;
@@ -34,7 +35,10 @@ import io.redspace.ironsspellbooks.item.Scroll;
 import io.redspace.ironsspellbooks.item.armor.InfernalSorcererArmorItem;
 import io.redspace.ironsspellbooks.network.EquipmentChangedPacket;
 import io.redspace.ironsspellbooks.network.SyncManaPacket;
-import io.redspace.ironsspellbooks.registries.*;
+import io.redspace.ironsspellbooks.registries.BlockRegistry;
+import io.redspace.ironsspellbooks.registries.ComponentRegistry;
+import io.redspace.ironsspellbooks.registries.ItemRegistry;
+import io.redspace.ironsspellbooks.registries.MobEffectRegistry;
 import io.redspace.ironsspellbooks.util.MinecraftInstanceHelper;
 import io.redspace.ironsspellbooks.util.ModTags;
 import io.redspace.ironsspellbooks.util.UpgradeUtils;
@@ -83,6 +87,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.AnvilUpdateEvent;
 import net.neoforged.neoforge.event.ItemAttributeModifierEvent;
+import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.EntityMountEvent;
 import net.neoforged.neoforge.event.entity.EntityTeleportEvent;
 import net.neoforged.neoforge.event.entity.EntityTravelToDimensionEvent;
@@ -104,6 +109,8 @@ import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.event.CurioAttributeModifierEvent;
 import top.theillusivec4.curios.api.event.CurioChangeEvent;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @EventBusSubscriber
@@ -721,6 +728,42 @@ public class ServerPlayerEvents {
                 if (Utils.random.nextFloat() < i) {
                     baby.setImmuneToZombification(true);
                 }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void handleOminousEntities(EntityJoinLevelEvent event) {
+        if (!(event.getLevel() instanceof ServerLevel serverLevel)) {
+            return;
+        }
+        var entity = event.getEntity();
+        if (entity instanceof IOminousEntity ominousSettings && !ominousSettings.isOminous()) {
+            float rangeSqr = ominousSettings.ominousTriggerRange();
+            rangeSqr *= rangeSqr;
+            Vec3 center = entity.position();
+            List<Player> ominousPlayers = new ArrayList<>();
+            for (Player player : serverLevel.players()) {
+                if (player.isCreative() || player.isSpectator() || player.distanceToSqr(center) > rangeSqr) {
+                    continue;
+                }
+                if (player.hasEffect(MobEffects.TRIAL_OMEN)) {
+                    ominousPlayers.add(player);
+                } else if (player.hasEffect(MobEffects.BAD_OMEN)) {
+                    ominousPlayers.add(player);
+                    MobEffectInstance mobeffectinstance = player.getEffect(MobEffects.BAD_OMEN);
+                    int i = mobeffectinstance.getAmplifier() + 1;
+                    int j = 18000 * i;
+                    player.removeEffect(MobEffects.BAD_OMEN);
+                    player.addEffect(new MobEffectInstance(MobEffects.TRIAL_OMEN, j, 0));
+                    MagicManager.spawnParticles(serverLevel, ParticleTypes.SOUL_FIRE_FLAME, player.getX(), player.getY(0.5), player.getZ(), 25, 0.1, 0.2, 0.1, 0.2, false);
+                    MagicManager.spawnParticles(serverLevel, ParticleTypes.TRIAL_OMEN, player.getX(), player.getY(0.5), player.getZ(), 25, 0.1, 0.2, 0.1, 0.2, false);
+                }
+            }
+            if (!ominousPlayers.isEmpty()) {
+                ominousSettings.onOminousTrigger();
+                serverLevel.playSound(null, BlockPos.containing(center), SoundEvents.TRIAL_SPAWNER_OMINOUS_ACTIVATE, SoundSource.BLOCKS, 4, 1.0F);
+//                TrialSpawner.addDetectPlayerParticles(this.level, pos, randomsource, 0, ParticleTypes.TRIAL_SPAWNER_DETECTED_PLAYER_OMINOUS);
             }
         }
     }
