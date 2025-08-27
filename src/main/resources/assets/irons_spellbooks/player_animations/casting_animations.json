@@ -13712,7 +13712,7 @@
 			}
 		},
 		"scythe_dagger_double_horizontal": {
-			"animation_length": 3.0417,
+			"animation_length": 2.8333,
 			"bones": {
 				"body": {
 					"rotation": {
@@ -13979,20 +13979,20 @@
 							"vector": [0, 0, 0]
 						},
 						"0.4583": {
-							"vector": [68.30978, -25.30644, 83.50017],
+							"vector": [67.35024, 21.21466, 57.43342],
 							"easing": "easeInQuad"
 						},
 						"1.0": {
-							"vector": [-221.95736, 13.67686, 105.156],
+							"vector": [-218.90091, -21.80438, 65.70398],
 							"easing": "easeInOutQuad"
 						},
 						"1.5417": {
-							"vector": [-177.29775, 0.00585, 114.98137],
+							"vector": [-177.66227, 1.35582, 85.0089],
 							"easing": "easeInOutSine"
 						},
-						"1.7917": {
-							"vector": [-95.57179, -22.25453, 69.18351],
-							"easing": "easeInOutQuad"
+						"1.7083": {
+							"vector": [-177.66227, 1.35582, 85.0089],
+							"easing": "easeInOutSine"
 						},
 						"2.0": {
 							"vector": [60.61242, -5.56444, 84.79735],
@@ -14011,7 +14011,7 @@
 							"vector": [0, 0, 0]
 						},
 						"0.4583": {
-							"vector": [-1, 1, 4],
+							"vector": [-1, -4, 4],
 							"easing": "easeInQuad"
 						},
 						"0.6667": {
@@ -14019,16 +14019,16 @@
 							"easing": "easeInQuad"
 						},
 						"0.9167": {
-							"vector": [9.99, -8.01, -6.98],
+							"vector": [9.99, -1.01, -6.98],
 							"easing": "easeOutQuad"
 						},
 						"1.4583": {
-							"vector": [6.34, -5, -4.33],
+							"vector": [6.34, -1, -4.33],
 							"easing": "easeInSine"
 						},
-						"1.7917": {
-							"vector": [0, -6, -3],
-							"easing": "easeInOutQuad"
+						"1.7083": {
+							"vector": [6.34, -1, -4.33],
+							"easing": "easeInSine"
 						},
 						"2.0": {
 							"vector": [-2, -3, 2],
@@ -14060,9 +14060,6 @@
 							"vector": [0, 0, 0],
 							"easing": "easeInOutQuad"
 						}
-					},
-					"position": {
-						"vector": ["easeInOutCubic", "easeInOutCubic", "easeInOutCubic"]
 					}
 				},
 				"left_arm": {
@@ -14079,10 +14076,10 @@
 							"easing": "easeInOutQuad"
 						},
 						"1.8333": {
-							"vector": [-35.93461, 48.42583, -109.09381],
+							"vector": [-38.57452, 13.16207, -86.30071],
 							"easing": "easeInOutQuad"
 						},
-						"2.0": {
+						"2.0417": {
 							"vector": [-10.26, 25.11, -80.55],
 							"easing": "easeInOutSine"
 						},
@@ -14090,12 +14087,13 @@
 							"vector": [-160.94574, 8.62319, -88.47219],
 							"easing": "easeInOutQuad"
 						},
-						"2.5833": {
-							"vector": [-107.75313, 9.53274, -88.03513],
+						"2.4167": {
+							"vector": [-184.34526, 9.07804, -88.25363],
 							"easing": "easeInOutSine"
 						},
 						"2.8333": {
-							"vector": [-34.48, 3.05, -28.17]
+							"vector": [-34.48, 3.05, -28.17],
+							"easing": "easeInSine"
 						}
 					},
 					"position": {
@@ -14115,7 +14113,7 @@
 							"easing": "easeInSine"
 						},
 						"1.7083": {
-							"vector": [0, 0, -2],
+							"vector": [0, -4, -2],
 							"easing": "easeInOutQuad"
 						},
 						"2.0": {
@@ -14130,12 +14128,13 @@
 							"vector": [-2.9, -1.98, -7.1],
 							"easing": "easeOutQuad"
 						},
-						"2.5833": {
-							"vector": [2, -2, -1],
+						"2.4167": {
+							"vector": [-5.45, -1.99, -7.05],
 							"easing": "easeInOutSine"
 						},
 						"2.8333": {
-							"vector": [0.64, -0.64, -0.32]
+							"vector": [0.64, -0.64, -0.32],
+							"easing": "easeInSine"
 						}
 					}
 				}
@@ -18047,11 +18046,12 @@
 						"1.125": {
 							"vector": [-96.57553, -25.27153, 98.05528]
 						},
-						"2.25": {
+						"2.0417": {
 							"vector": [2.30637, 4.22127, 104.78635]
 						},
 						"2.625": {
-							"vector": [1.88, 4.34, 99.44]
+							"vector": [0, 0, 0],
+							"easing": "easeInSine"
 						}
 					},
 					"position": {
@@ -18065,8 +18065,12 @@
 						"1.125": {
 							"vector": [5, -4, -7]
 						},
-						"2.25": {
+						"2.0417": {
 							"vector": [-4, -3, 1]
+						},
+						"2.625": {
+							"vector": [0, 0, 0],
+							"easing": "easeInSine"
 						}
 					}
 				},
