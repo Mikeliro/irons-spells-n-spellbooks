@@ -28,6 +28,10 @@ public class AnimationHolder {
         this.animatesLegs = animatesLegs;
     }
 
+    /**
+     * Use resource-location sensitive {@link AnimationHolder#AnimationHolder(ResourceLocation, boolean, boolean)}
+     */
+    @Deprecated(forRemoval = true)
     public AnimationHolder(String path, boolean playOnce) {
         this(path, playOnce, false);
     }

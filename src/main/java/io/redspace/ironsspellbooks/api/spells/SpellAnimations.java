@@ -31,5 +31,7 @@ public class SpellAnimations {
     public static final AnimationHolder CAST_KNEELING_PRAYER = new AnimationHolder("kneeling_prayer", false);
     public static final AnimationHolder SELF_CAST_TWO_HANDS = new AnimationHolder("self_cast_two_hands", true);
     public static final AnimationHolder ANIMATION_CONTINUOUS_CAST_ONE_HANDED = new AnimationHolder("continuous_thrust_one_handed", false);
+    public static final AnimationHolder ONE_HANDED_RAY_CHARGE = new AnimationHolder("charge_one_handed_ray", false, true);
+    public static final AnimationHolder ONE_HANDED_RAY_SHOOT = new AnimationHolder("shoot_one_handed_ray", true, true);
 
 }

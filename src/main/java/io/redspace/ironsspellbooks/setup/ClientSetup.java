@@ -379,6 +379,7 @@ public class ClientSetup {
         event.registerSpriteSet(ParticleRegistry.FLAME_STRIKE_PARTICLE.get(), FlameStrikeParticle.Provider::new);
         event.registerSpriteSet(ParticleRegistry.EMBEROUS_ASH_PARTICLE.get(), EmberousAshParticle.Provider::new);
         event.registerSpriteSet(ParticleRegistry.FIERY_SMOKE_PARTICLE.get(), FierySmokeParticle.Provider::new);
+        event.registerSpriteSet(ParticleRegistry.SOULFIRE_RAY_PARTICLE.get(), SoulfireRayParticle.Provider::new);
 
     }
 
