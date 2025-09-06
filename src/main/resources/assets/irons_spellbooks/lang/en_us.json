@@ -895,6 +895,7 @@
   "effect.irons_spellbooks.thunderstorm": "Thunderstorm",
   "effect.irons_spellbooks.frostbite": "Frostbite",
   "effect.irons_spellbooks.immolate": "Immolation",
+  "effect.irons_spellbooks.soul_burn": "Soul Burn",
   "effect.irons_spellbooks.heartstop.description": "Become temporarily invulnerable, but take 50% of accumulated damage once it wears off",
   "effect.irons_spellbooks.angel_wings.description": "Grants spectral elytra wings",
   "effect.irons_spellbooks.abyssal_shroud.description": "Dodge any attack while under its effects, taking no damage",
@@ -922,6 +923,7 @@
   "effect.irons_spellbooks.thunderstorm.description": "While under the effects of the spell, small bolts of lightning strike nearby creatures every 2 seconds.",
   "effect.irons_spellbooks.frostbite.description": "While under the effects of the spell, any fully-frozen creature you kill turn into an Ice Shadow. Ice Shadows shatter into icicles after 5 seconds or upon taking any damage.",
   "effect.irons_spellbooks.immolate.description": "Upon reaching 3 stacks of Immolation, the creature explodes, dealing damage and Immolating nearby creatures",
+  "effect.irons_spellbooks.soul_burn.description": "Decreases incoming healing by 5% per level",
 
   "commands.irons_spellbooks.create_scroll.failed": "Create Scroll Failed",
   "commands.irons_spellbooks.create_spell_book.failed": "Create Spell Book Failed",

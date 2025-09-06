@@ -31,7 +31,6 @@ public class CameraShakeManager {
 
     @SubscribeEvent
     public static void serverTick(ServerTickEvent.Post event) {
-        IronsSpellbooks.LOGGER.debug("camerahsake server tick");
         if (cameraShakeData.isEmpty()) {
             return;
         }
@@ -113,7 +112,6 @@ public class CameraShakeManager {
     @SubscribeEvent
     @OnlyIn(Dist.CLIENT)
     public static void handleCameraShake(ClientTickEvent.Post event) {
-        IronsSpellbooks.LOGGER.debug("camerahsake client tick");
 //        if (cameraShakeData.isEmpty()) {
 //            return;
 //        }
