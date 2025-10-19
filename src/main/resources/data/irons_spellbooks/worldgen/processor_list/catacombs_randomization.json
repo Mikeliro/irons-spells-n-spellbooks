@@ -1,6 +1,9 @@
 {
   "processors": [
     {
+      "processor_type": "irons_spellbooks:clear_vault_data"
+    },
+    {
       "processor_type": "minecraft:rule",
       "rules": [
         {
