@@ -382,6 +382,7 @@ public class ClientSetup {
         event.registerSpriteSet(ParticleRegistry.FIERY_SMOKE_PARTICLE.get(), FierySmokeParticle.Provider::new);
         event.registerSpriteSet(ParticleRegistry.SOULFIRE_RAY_PARTICLE.get(), SoulfireRayParticle.Provider::new);
 
+        event.registerSpecial(ParticleRegistry.SWIRLING_PARTICLE.get(), new SwirlingParticle.Provider());
     }
 
     @SubscribeEvent
