@@ -43,13 +43,29 @@ public class IronsDebugCommand {
                 PocketDimensionManager.INSTANCE.remove(player.getUUID());
             }
             return 1;
-        })))).then(Commands.literal("claimSummon").then(
+        })))).then(Commands.literal("summons").then(Commands.literal("set_self_as_owner").then(
                 Commands.argument("target", EntityArgument.entity())
                         .executes(commandContext -> {
                             SummonManager.setOwner(EntityArgument.getEntity(commandContext, "target"), commandContext.getSource().getEntityOrException());
                             return 1;
                         })
-        )));
+        )).then(Commands.literal("get_owner").then(
+                Commands.argument("target", EntityArgument.entity())
+                        .executes(commandContext -> {
+                            var entity = EntityArgument.getEntity(commandContext, "target");
+                            var owner = SummonManager.getOwner(entity);
+                            if (owner == null) {
+                                commandContext.getSource().sendSystemMessage(
+                                        Component.literal(String.format("Entity %s has no owner", entity.getName().getString()))
+                                );
+                            } else {
+                                commandContext.getSource().sendSystemMessage(
+                                        Component.literal(String.format("Entity %s has owner %s (%s)", entity.getName().getString(), owner.getName().getString(), owner.getUUID()))
+                                );
+                            }
+                            return 1;
+                        })
+        ))));
     }
 
     public static int getDataForType(CommandSourceStack source, IronsDebugCommandTypes ironsDebugCommandTypes) {
